@@ -1,3 +1,7 @@
+/* eslint-disable max-statements */
+var translator = new Translator();
+
+
 var langs = [
   ['Afrikaans', ['af-ZA']],
   ['Bahasa Indonesia', ['id-ID']],
@@ -153,6 +157,30 @@ if (!('webkitSpeechRecognition' in window)) {
     }
     ////////////////////////////
     console.log('final_strans', final_transcript);
+
+
+
+    let fromLang = 'es-MX'
+
+    var config = {
+      from: fromLang,
+      to: 'en',
+      api_key: 'AIzaSyDto_Z1BDKu1xv3I2Ut3a3NfoaJaqyrNTE', // use your own key
+      callback: function (translatedText) {
+          console.log('translated text', translatedText);
+
+          final_transcript = translatedText
+      }
+    };
+
+
+    translator.translateLanguage(final_transcript, config)
+
+    console.log('final_strans', final_transcript);
+
+
+
+
     final_span.innerHTML = linebreak(final_transcript);
     interim_span.innerHTML = linebreak(interim_transcript);
     if (final_transcript) {
@@ -284,3 +312,8 @@ function showButtons(style) {
 }
 
 console.log('finalTrans', final_transcript);
+
+
+
+
+
